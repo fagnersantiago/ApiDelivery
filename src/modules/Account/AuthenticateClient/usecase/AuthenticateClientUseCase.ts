@@ -1,15 +1,15 @@
-import { prisma } from "../../../databases/prismaClient";
+import { prisma } from "../../../../databases/prismaClient";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 
-interface IAuthenticateDeliveryman {
+interface IClientAuthenticate {
   username: string;
   password: string;
 }
-export class AuthenticateDeliveryman {
-  async execute({ username, password }: IAuthenticateDeliveryman) {
+export class AuthenticateClient {
+  async execute({ username, password }: IClientAuthenticate) {
     // verifcar se o usário existe
-    const deliveryman = await prisma.clients.findFirst({
+    const client = await prisma.clients.findFirst({
       where: {
         username,
       },
@@ -23,15 +23,15 @@ export class AuthenticateDeliveryman {
 
     const passwordMatch = await compare(
       password,
-      deliveryman ? deliveryman.password : password
+      client ? client.password : password
     );
 
     if (!passwordMatch) {
-      throw Error("deliverymen or password invalid");
+      throw Error("deliveryman or password invalid");
     }
     //gerar token de authenticação
-    const token = sign({ username }, String(process.env.DELIVERYMAN_TOKEN), {
-      subject: deliveryman?.id,
+    const token = sign({ username }, String(process.env.CLIENT_TOKEN), {
+      subject: client?.id,
       expiresIn: "1d",
     });
 

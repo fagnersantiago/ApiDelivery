@@ -1,4 +1,4 @@
-import { prisma } from "../../../databases/prismaClient";
+import { prisma } from "../../../../databases/prismaClient";
 
 interface IDeliveries {
   item_name: string;
