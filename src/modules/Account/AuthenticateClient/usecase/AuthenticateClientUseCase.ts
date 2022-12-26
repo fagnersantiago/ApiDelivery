@@ -11,12 +11,15 @@ export class AuthenticateClient {
     // verifcar se o usário existe
     const client = await prisma.clients.findFirst({
       where: {
-        username,
+        username: {
+          equals: username,
+          mode: "insensitive",
+        },
       },
     });
 
     if (!username) {
-      throw Error("deliveryman or password invalid");
+      throw Error("client or password invalid");
     }
 
     // verificar se senha existe
@@ -27,7 +30,7 @@ export class AuthenticateClient {
     );
 
     if (!passwordMatch) {
-      throw Error("deliveryman or password invalid");
+      throw Error("client or password invalid");
     }
     //gerar token de authenticação
     const token = sign({ username }, String(process.env.CLIENT_TOKEN), {

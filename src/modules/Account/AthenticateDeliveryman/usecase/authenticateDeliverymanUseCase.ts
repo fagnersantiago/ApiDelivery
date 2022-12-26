@@ -9,9 +9,12 @@ interface IAuthenticateDeliveryman {
 export class AuthenticateDeliveryman {
   async execute({ username, password }: IAuthenticateDeliveryman) {
     // verifcar se o usário existe
-    const deliveryman = await prisma.clients.findFirst({
+    const deliveryman = await prisma.deliveryman.findFirst({
       where: {
-        username,
+        username: {
+          equals: username,
+          mode: "insensitive",
+        },
       },
     });
 
