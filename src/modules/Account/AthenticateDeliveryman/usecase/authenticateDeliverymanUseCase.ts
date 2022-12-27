@@ -1,6 +1,9 @@
 import { prisma } from "../../../../databases/prismaClient";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
+import { AppError } from "../../../Error/appError";
+import { DeliverymanAlreadyExists } from "../../../Error/deliverymanErrors/deliverymanAlreadyExists";
+import { PasswordOrEmailInvalid } from "../../../Error/deliverymanErrors/clientOrpasswordInvalid";
 
 interface IAuthenticateDeliveryman {
   username: string;
@@ -19,7 +22,7 @@ export class AuthenticateDeliveryman {
     });
 
     if (!username) {
-      throw Error("deliveryman or password invalid");
+      throw new DeliverymanAlreadyExists();
     }
 
     // verificar se senha existe
@@ -30,7 +33,7 @@ export class AuthenticateDeliveryman {
     );
 
     if (!passwordMatch) {
-      throw Error("deliverymen or password invalid");
+      throw new PasswordOrEmailInvalid();
     }
     //gerar token de authenticação
     const token = sign({ username }, String(process.env.DELIVERYMAN_TOKEN), {

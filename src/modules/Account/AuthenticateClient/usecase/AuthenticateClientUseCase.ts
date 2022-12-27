@@ -1,6 +1,8 @@
 import { prisma } from "../../../../databases/prismaClient";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
+import { ClientOrEmailInvalid } from "../../../Error/userErrors/passwordOrEmailInvalid";
+import { UserAlreadyExists } from "../../../Error/userErrors/userAlreadyExistsError";
 
 interface IClientAuthenticate {
   username: string;
@@ -19,7 +21,7 @@ export class AuthenticateClient {
     });
 
     if (!username) {
-      throw Error("client or password invalid");
+      throw new UserAlreadyExists();
     }
 
     // verificar se senha existe
@@ -30,7 +32,7 @@ export class AuthenticateClient {
     );
 
     if (!passwordMatch) {
-      throw Error("client or password invalid");
+      throw new ClientOrEmailInvalid();
     }
     //gerar token de authenticação
     const token = sign({ username }, String(process.env.CLIENT_TOKEN), {

@@ -8,12 +8,12 @@ interface IUpdate {
 export class UpdateEndAtUseCase {
   async execute({ id_delivery, id_deliveryman }: IUpdate) {
     const deleveries = await prisma.deliveries.updateMany({
+      data: {
+        end_at: new Date(),
+      },
       where: {
         id: id_delivery,
         id_deliveryman,
-      },
-      data: {
-        end_at: new Date(),
       },
     });
 

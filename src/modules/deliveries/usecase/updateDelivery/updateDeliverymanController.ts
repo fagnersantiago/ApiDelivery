@@ -3,7 +3,7 @@ import { UpadateDeliverymanUseCase } from "./updateDeliverymanUseCase";
 
 export class UpdateDeliverymanController {
   async handle(request: Request, response: Response) {
-    const id_deliveryman = request.id_deliveryman;
+    const { id_deliveryman } = request;
     const { id: id_delivery } = request.params;
 
     const updateDeliveryUsecase = new UpadateDeliverymanUseCase();
@@ -13,6 +13,6 @@ export class UpdateDeliverymanController {
       id_delivery,
     });
 
-    return response.json(delivery);
+    return response.status(200).json(delivery);
   }
 }

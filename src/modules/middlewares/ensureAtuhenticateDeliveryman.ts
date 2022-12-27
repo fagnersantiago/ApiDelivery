@@ -1,5 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
+import { TokenIsMissing } from "../Error/jwtError/jwtTokenIsMissing";
+import { InvalidToken } from "../Error/jwtError/jwtInvalidToken";
 
 interface IPayload {
   sub: string;
@@ -12,9 +14,7 @@ export async function ensureAtuhenticateDeliveryman(
   const authHeaders = await request.headers.authorization;
 
   if (!authHeaders) {
-    return response.status(401).json({
-      message: "Token is missing",
-    });
+    throw new TokenIsMissing();
   }
 
   const [, token] = authHeaders.split(" ");
@@ -29,8 +29,6 @@ export async function ensureAtuhenticateDeliveryman(
 
     next();
   } catch (error) {
-    return response.status(401).json({
-      message: "Invalid Token",
-    });
+    throw new InvalidToken();
   }
 }

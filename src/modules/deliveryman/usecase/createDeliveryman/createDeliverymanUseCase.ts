@@ -1,5 +1,6 @@
 import { prisma } from "../../../../databases/prismaClient";
 import { hash } from "bcrypt";
+import { DeliverymanAlreadyExists } from "../../../Error/deliverymanErrors/deliverymanAlreadyExists";
 
 interface IDeliveryman {
   username: string;
@@ -8,7 +9,7 @@ interface IDeliveryman {
 
 export class CreateDeliveryman {
   async execute({ username, password }: IDeliveryman) {
-    const clientExist = await prisma.deliveryman.findFirst({
+    const deliverymanExist = await prisma.deliveryman.findFirst({
       where: {
         username: {
           equals: username,
@@ -17,8 +18,8 @@ export class CreateDeliveryman {
       },
     });
 
-    if (clientExist) {
-      throw Error("deliveryman already exists");
+    if (deliverymanExist) {
+      throw new DeliverymanAlreadyExists();
     }
     const hashPassword = await hash(password, 10);
 
