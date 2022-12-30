@@ -7,7 +7,7 @@ interface IUserClient {
   password: string;
 }
 
-export class CreateClient {
+export class CreateClientUseCase {
   async execute({ username, password }: IUserClient) {
     const clientExist = await prisma.clients.findFirst({
       where: {
