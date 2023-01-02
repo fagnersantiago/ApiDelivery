@@ -1,6 +1,8 @@
 import { prisma } from "../../../../databases/prismaClient";
 import { hash } from "bcrypt";
 import { UserAlreadyExists } from "../../../Error/userErrors/userAlreadyExistsError";
+import { Client } from "../../../../entities/Client";
+import { ClientRepository } from "../../repository/clientRepository";
 
 interface IUserClient {
   username: string;
@@ -8,26 +10,20 @@ interface IUserClient {
 }
 
 export class CreateClientUseCase {
+  constructor(private createClientUseCase: ClientRepository) {}
   async execute({ username, password }: IUserClient) {
-    const clientExist = await prisma.clients.findFirst({
-      where: {
-        username: {
-          equals: username,
-          mode: "insensitive",
-        },
-      },
-    });
+    const clientExists = await this.createClientUseCase.findByUsername(
+      username
+    );
 
-    if (clientExist) {
+    if (clientExists) {
       throw new UserAlreadyExists();
     }
     const hashPassword = await hash(password, 10);
 
-    const client = await prisma.clients.create({
-      data: {
-        username,
-        password: hashPassword,
-      },
+    const client = await this.createClientUseCase.create({
+      username,
+      password,
     });
 
     return client;
