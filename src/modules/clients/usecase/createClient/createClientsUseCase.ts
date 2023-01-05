@@ -2,7 +2,7 @@ import { prisma } from "../../../../databases/prismaClient";
 import { hash } from "bcrypt";
 import { UserAlreadyExists } from "../../../Error/userErrors/userAlreadyExistsError";
 import { Client } from "../../../../entities/Client";
-import { ClientRepository } from "../../repository/clientRepository";
+import { IClientRepository } from "../../repository/IclientRepository";
 
 interface IUserClient {
   username: string;
@@ -10,7 +10,7 @@ interface IUserClient {
 }
 
 export class CreateClientUseCase {
-  constructor(private createClientUseCase: ClientRepository) {}
+  constructor(private createClientUseCase: IClientRepository) {}
   async execute({ username, password }: IUserClient) {
     const clientExists = await this.createClientUseCase.findByUsername(
       username
@@ -23,7 +23,7 @@ export class CreateClientUseCase {
 
     const client = await this.createClientUseCase.create({
       username,
-      password,
+      password: hashPassword,
     });
 
     return client;

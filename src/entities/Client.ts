@@ -1,4 +1,4 @@
-import { uuid } from "uuidv4";
+import { v4 as uuid } from "uuid";
 
 export class Client {
   public readonly id?: string;
@@ -8,6 +8,7 @@ export class Client {
   constructor(username: string, password: string) {
     this.username = username;
     this.password = password;
+
     if (!this.id) {
       this.id = uuid();
     }
