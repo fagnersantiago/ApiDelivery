@@ -1,6 +1,5 @@
 import { prisma } from "../../../databases/prismaClient";
 import { Client } from "../../../entities/Client";
-import { UserAlreadyExists } from "../../Error/userErrors/userAlreadyExistsError";
 import { IClientDTO } from "../dto/IclientDTO";
 import { IClientRepository } from "./IclientRepository";
 

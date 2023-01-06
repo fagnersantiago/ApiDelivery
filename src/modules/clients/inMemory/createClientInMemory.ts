@@ -18,7 +18,7 @@ export class CreateClientInMemory implements IClientRepository {
   async create({ username, password }: IClientDTO): Promise<Client> {
     const client = new Client(username, password);
 
-    Object.assign(client, {
+    await Object.assign(client, {
       username,
       password,
     });

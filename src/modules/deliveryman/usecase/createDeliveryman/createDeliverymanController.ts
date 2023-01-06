@@ -1,11 +1,15 @@
 import { Request, Response } from "express";
-import { CreateDeliveryman } from "./createDeliverymanUseCase";
+import { CreateDeliverymanUseCase } from "./createDeliverymanUseCase";
+import { DeliverymanRepository } from "./repository/deliverymanRepository";
 
 export class CreateDeliverymanController {
   async handle(request: Request, response: Response) {
     const { username, password } = request.body;
 
-    const deliveryman = new CreateDeliveryman();
+    CreateDeliverymanUseCase;
+    const deliveryman = new CreateDeliverymanUseCase(
+      new DeliverymanRepository()
+    );
 
     const deliverymanCreated = await deliveryman.execute({
       username,

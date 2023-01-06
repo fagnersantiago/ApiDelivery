@@ -33,13 +33,7 @@ describe("Create Client", () => {
         username: "John doe",
         password: "12345",
       });
-
-      await createClientInMemory.create({
-        username,
-        password,
-      });
-
-      await createClientInMemory.create({
+      await createClientUsecase.execute({
         username,
         password,
       });
