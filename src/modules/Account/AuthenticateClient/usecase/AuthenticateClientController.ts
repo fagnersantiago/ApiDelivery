@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { Client } from "../../../../entities/Client";
 import { AuthenticateClient } from "./AuthenticateClientUseCase";
 
 export class AuthenticateClientController {

@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 
 export class Deliveryman {
-  private readonly id?: string;
+  private readonly id_deliveryman?: string;
   public username: string;
   public password: string;
 
@@ -9,8 +9,8 @@ export class Deliveryman {
     this.username = username;
     this.password = password;
 
-    if (!this.id) {
-      this.id = uuid();
+    if (!this.id_deliveryman) {
+      this.id_deliveryman = uuid();
     }
   }
 }

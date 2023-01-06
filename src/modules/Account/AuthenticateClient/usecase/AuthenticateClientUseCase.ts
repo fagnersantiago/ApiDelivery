@@ -3,6 +3,7 @@ import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import { ClientOrEmailInvalid } from "../../../Error/userErrors/passwordOrEmailInvalid";
 import { UserAlreadyExists } from "../../../Error/userErrors/userAlreadyExistsError";
+import { UserNotFound } from "../../../Error/userErrors/userNotFound";
 
 interface IClientAuthenticate {
   username: string;
@@ -20,8 +21,8 @@ export class AuthenticateClient {
       },
     });
 
-    if (!username) {
-      throw new UserAlreadyExists();
+    if (!client) {
+      throw new UserNotFound();
     }
 
     // verificar se senha existe
