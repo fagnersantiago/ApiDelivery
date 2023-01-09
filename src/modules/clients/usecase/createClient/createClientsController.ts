@@ -1,14 +1,12 @@
 import { Request, Response } from "express";
-import { CreateClientRepository } from "../../repository/clientRepository";
 import { CreateClientUseCase } from "./createClientsUseCase";
 
 export class CreateClientController {
+  constructor(private createClient: CreateClientUseCase) {}
   async handle(request: Request, response: Response) {
     const { username, password } = request.body;
 
-    const createClient = new CreateClientUseCase(new CreateClientRepository());
-
-    const clientCreated = await createClient.execute({
+    const clientCreated = await this.createClient.execute({
       username,
       password,
     });

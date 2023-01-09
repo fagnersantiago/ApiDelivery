@@ -1,5 +1,5 @@
 import { AppError } from "../../../Error/appError";
-import { CreateClientInMemory } from "../../inMemory/createClientInMemory";
+import { CreateClientInMemory } from "../../repository/inMemory/createClientInMemory";
 import { CreateClientUseCase } from "./createClientsUseCase";
 
 let createClientInMemory: CreateClientInMemory;
@@ -12,7 +12,7 @@ describe("Create Client", () => {
   });
 
   it("Should be able create a new client", async () => {
-    const { id, username, password } = await createClientUsecase.execute({
+    const { username, password } = await createClientUsecase.execute({
       username: "jhon doe",
       password: "12345",
     });
@@ -27,7 +27,7 @@ describe("Create Client", () => {
     expect(client).toHaveProperty("id");
   });
 
-  it("Should not be able create an existing client", async () => {
+  it("Should not be able create an existing client", () => {
     expect(async () => {
       const { username, password } = await createClientUsecase.execute({
         username: "John doe",

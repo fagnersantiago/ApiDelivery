@@ -10,9 +10,9 @@ interface IUserClient {
 }
 
 export class CreateClientUseCase {
-  constructor(private createClientUseCase: IClientRepository) {}
+  constructor(private createClientRepository: IClientRepository) {}
   async execute({ username, password }: IUserClient) {
-    const clientExists = await this.createClientUseCase.findByUsername(
+    const clientExists = await this.createClientRepository.findByUsername(
       username
     );
 
@@ -21,7 +21,7 @@ export class CreateClientUseCase {
     }
     const hashPassword = await hash(password, 10);
 
-    const client = await this.createClientUseCase.create({
+    const client = await this.createClientRepository.create({
       username,
       password: hashPassword,
     });

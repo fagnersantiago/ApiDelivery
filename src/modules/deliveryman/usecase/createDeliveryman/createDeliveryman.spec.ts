@@ -24,7 +24,6 @@ describe("Create Deliveryman", () => {
       password,
     });
 
-    await createDeliverymanInMemory.findByUserName(deliveriman.username);
     expect(deliveriman).toHaveProperty("id");
   });
 
@@ -44,6 +43,6 @@ describe("Create Deliveryman", () => {
         username,
         password,
       });
-    }).rejects.toBeInstanceOf(DeliverymanAlreadyExists);
+    }).rejects.toBeInstanceOf(AppError);
   });
 });

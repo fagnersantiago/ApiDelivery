@@ -1,14 +1,13 @@
 import { Request, Response } from "express";
 import { Client } from "../../../../entities/Client";
-import { AuthenticateClient } from "./AuthenticateClientUseCase";
+import { AuthenticateClientUseCase } from "./AuthenticateClientUseCase";
 
 export class AuthenticateClientController {
+  constructor(private authenticateClientUseCase: AuthenticateClientUseCase) {}
   async handle(request: Request, response: Response) {
     const { username, password } = request.body;
 
-    const authenticateClient = new AuthenticateClient();
-
-    const authenticate = await authenticateClient.execute({
+    const authenticate = await this.authenticateClientUseCase.execute({
       username,
       password,
     });

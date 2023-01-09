@@ -2,7 +2,7 @@ import { prisma } from "../../../../databases/prismaClient";
 import { hash } from "bcrypt";
 import { DeliverymanAlreadyExists } from "../../../Error/deliverymanErrors/deliverymanAlreadyExists";
 import { Deliveryman } from "../../../../entities/Deliveryman";
-import { DeliverymanRepository } from "./repository/deliverymanRepository";
+import { DeliverymanRepository } from "./repository/inMemory/deliverymanInMemoryRepository";
 import { IDeliverymanRepository } from "./repository/IdelivermanRepositrory";
 
 interface IDeliveryman {

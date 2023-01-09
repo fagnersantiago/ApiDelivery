@@ -1,8 +1,8 @@
-import { Client } from "../../../entities/Client";
-import { AppError } from "../../Error/appError";
-import { UserAlreadyExists } from "../../Error/userErrors/userAlreadyExistsError";
-import { IClientDTO } from "../dto/IclientDTO";
-import { IClientRepository } from "../repository/IclientRepository";
+import { Client } from "../../../../entities/Client";
+import { AppError } from "../../../Error/appError";
+import { UserAlreadyExists } from "../../../Error/userErrors/userAlreadyExistsError";
+import { IClientDTO } from "../../dto/IclientDTO";
+import { IClientRepository } from "../IclientRepository";
 
 export class CreateClientInMemory implements IClientRepository {
   private createClientInMemory: Client[] = [];

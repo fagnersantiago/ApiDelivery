@@ -4,22 +4,19 @@ import { sign } from "jsonwebtoken";
 import { ClientOrEmailInvalid } from "../../../Error/userErrors/passwordOrEmailInvalid";
 import { UserAlreadyExists } from "../../../Error/userErrors/userAlreadyExistsError";
 import { UserNotFound } from "../../../Error/userErrors/userNotFound";
+import { IClientRepository } from "../../../clients/repository/IclientRepository";
 
 interface IClientAuthenticate {
   username: string;
   password: string;
 }
-export class AuthenticateClient {
+export class AuthenticateClientUseCase {
+  constructor(private authenticateClientRepository: IClientRepository) {}
   async execute({ username, password }: IClientAuthenticate) {
     // verifcar se o usário existe
-    const client = await prisma.clients.findFirst({
-      where: {
-        username: {
-          equals: username,
-          mode: "insensitive",
-        },
-      },
-    });
+    const client = await this.authenticateClientRepository.findByUsername(
+      username
+    );
 
     if (!client) {
       throw new UserNotFound();

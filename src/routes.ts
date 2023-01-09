@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { request, response, Router } from "express";
 import { AuthenticateClientController } from "./modules/Account/AuthenticateClient/usecase/AuthenticateClientController";
 import { AuthenticateDeliverymanController } from "./modules/Account/AthenticateDeliveryman/usecase/authenticateDeliverymanController";
 import { CreateClientController } from "./modules/clients/usecase/createClient/createClientsController";
@@ -11,12 +11,15 @@ import { UpdateDeliverymanController } from "./modules/deliveries/usecase/update
 import { FindAllDeliveriesByClientController } from "./modules/clients/usecase/findAllDeliveriesByClient/findAllDeliveriesByClientController";
 import { FindAllDeliveriesByDeliverymanController } from "./modules/deliveryman/usecase/findAllDeliveryByDeliveryman/findAllDeliveryController";
 import { UpdateEndAtController } from "./modules/deliveries/usecase/updateEndAt/updateEndAtController";
+import { createClientFactoy } from "./modules/clients/usecase/createClient/createClientFactory";
+
+import { authenticateClientFactory } from "./modules/Account/AuthenticateClient/usecase/AuthentitaceFactory";
 
 const routes = Router();
 
-const authenticateClientController = new AuthenticateClientController();
+//const authenticateClientController = new AuthenticateClientController();
 const authentticateDeliveryman = new AuthenticateDeliverymanController();
-const createclientCrontroller = new CreateClientController();
+//const createclientCrontroller = new CreateClientController();
 const createDeliverymanController = new CreateDeliverymanController();
 const createDeliveryController = new CreateDeliverieController();
 const findaAllAvailableDelivery = new FindAllDeliveryAvailableController();
@@ -28,9 +31,13 @@ const findAllDeliveriesByDeliverymanController =
 
 const updateEndAt = new UpdateEndAtController();
 
-routes.post("/auth/client", authenticateClientController.handle);
+routes.post("/auth/client", (request, response) =>
+  authenticateClientFactory().handle(request, response)
+);
 routes.post("/auth/deliveryman", authentticateDeliveryman.handle);
-routes.post("/client/", createclientCrontroller.handle);
+routes.post("/client/", (request, response) =>
+  createClientFactoy().handle(request, response)
+);
 routes.post("/deliveryman/", createDeliverymanController.handle);
 routes.post(
   "/delivery/",

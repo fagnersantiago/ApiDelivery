@@ -3,5 +3,5 @@ import { DeliverymanDto } from "../../../dto/deliverymanDto";
 
 export interface IDeliverymanRepository {
   findByUserName(username: string): Promise<Deliveryman>;
-  create({ username, password }: DeliverymanDto): Promise<Deliveryman>;
+  create(data: DeliverymanDto): Promise<Deliveryman>;
 }

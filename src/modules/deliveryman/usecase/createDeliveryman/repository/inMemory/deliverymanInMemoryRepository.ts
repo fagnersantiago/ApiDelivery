@@ -1,7 +1,6 @@
-import { Deliveryman } from "../../../../../entities/Deliveryman";
-import { DeliverymanAlreadyExists } from "../../../../Error/deliverymanErrors/deliverymanAlreadyExists";
-import { DeliverymanDto } from "../../../dto/deliverymanDto";
-import { IDeliverymanRepository } from "./IdelivermanRepositrory";
+import { Deliveryman } from "../../../../../../entities/Deliveryman";
+import { DeliverymanDto } from "../../../../dto/deliverymanDto";
+import { IDeliverymanRepository } from "../IdelivermanRepositrory";
 
 export class DeliverymanRepository implements IDeliverymanRepository {
   constructor(private deliverymanRepository: Deliveryman[] = []) {}
