@@ -1,5 +1,5 @@
-import { Deliveryman } from "../../../../../entities/Deliveryman";
+import { Deliveries } from "../../../../../entities/Deliveries";
 
 export interface IFindDeliveriesByDeliveryman {
-  findById(id_deliveryman: string): Promise<Deliveryman>;
+  findById(id_deliveryman: string): Promise<Deliveries[]>;
 }
