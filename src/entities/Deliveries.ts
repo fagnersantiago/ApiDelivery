@@ -3,7 +3,7 @@ import { uuid } from "uuidv4";
 export class Deliveries {
   public readonly id?: string;
   public id_client: string;
-  public id_deliveryman: string;
+  public id_deliveryman?: string;
   public item_name: string;
   public created_at: Date;
   public end_at?: Date;
