@@ -1,18 +1,15 @@
-import { prisma } from "../../../../databases/prismaClient";
-
-interface IDeliveries {
-  item_name: string;
-  id_client: string;
-}
+import { ICreateDeliveries } from "../IcreateDeliveries";
+import { CreateDeliveryDTO } from "../../dto/createDeliveryDTO";
 
 export class CreateDeliveriesUseCase {
-  async execute({ item_name, id_client }: IDeliveries) {
-    const delivery = await prisma.deliveries.create({
-      data: {
-        item_name,
-        id_client,
-      },
+  constructor(private createDeliveriesRepository: ICreateDeliveries) {}
+  async execute({ item_name, id_client, created_at }: CreateDeliveryDTO) {
+    const delivery = await this.createDeliveriesRepository.create({
+      item_name,
+      id_client,
+      created_at,
     });
+
     return delivery;
   }
 }

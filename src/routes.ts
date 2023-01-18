@@ -3,7 +3,7 @@ import { AuthenticateClientController } from "./modules/Account/AuthenticateClie
 import { AuthenticateDeliverymanController } from "./modules/Account/AthenticateDeliveryman/usecase/authenticateDeliverymanController";
 import { CreateClientController } from "./modules/clients/usecase/createClient/createClientsController";
 import { CreateDeliverymanController } from "./modules/deliveryman/usecase/createDeliveryman/createDeliverymanController";
-import { CreateDeliverieController } from "./modules/deliveries/usecase/createDelivery/createDeliveriesController";
+import { CreateDeliveriesController } from "./modules/deliveries/usecase/createDelivery/createDeliveriesController";
 import { ensureAuthentication } from "./modules/middlewares/ensureAuthenticate";
 import { FindAllDeliveryAvailableController } from "./modules/deliveries/usecase/findAllAvailableDelivery/findAllAvailableDeliveryController";
 import { ensureAtuhenticateDeliveryman } from "./modules/middlewares/ensureAtuhenticateDeliveryman";
@@ -14,20 +14,21 @@ import { UpdateEndAtController } from "./modules/deliveries/usecase/updateEndAt/
 import { createClientFactoy } from "./modules/clients/usecase/createClient/createClientFactory";
 
 import { authenticateClientFactory } from "./modules/Account/AuthenticateClient/usecase/AuthentitaceFactory";
+import { createDeliveryFactory } from "./modules/deliveries/usecase/createDelivery/createDeliveriesFactory";
 
 const routes = Router();
 
 //const authenticateClientController = new AuthenticateClientController();
 const authentticateDeliveryman = new AuthenticateDeliverymanController();
 //const createclientCrontroller = new CreateClientController();
-const createDeliverymanController = new CreateDeliverymanController();
-const createDeliveryController = new CreateDeliverieController();
+//const createDeliverymanController = new CreateDeliverymanController();
+//const createDeliveryController = new CreateDeliverieController();
 const findaAllAvailableDelivery = new FindAllDeliveryAvailableController();
 const updateDaliveryman = new UpdateDeliverymanController();
 const findAllDeliveriesByClientController =
   new FindAllDeliveriesByClientController();
-const findAllDeliveriesByDeliverymanController =
-  new FindAllDeliveriesByDeliverymanController();
+//const findAllDeliveriesByDeliverymanController =
+// new FindAllDeliveriesByDeliverymanController();
 
 const updateEndAt = new UpdateEndAtController();
 
@@ -38,11 +39,9 @@ routes.post("/auth/deliveryman", authentticateDeliveryman.handle);
 routes.post("/client/", (request, response) =>
   createClientFactoy().handle(request, response)
 );
-routes.post("/deliveryman/", createDeliverymanController.handle);
-routes.post(
-  "/delivery/",
-  ensureAuthentication,
-  createDeliveryController.handle
+//routes.post("/deliveryman/", createDeliverymanController.handle);
+routes.post("/delivery/", ensureAuthentication, (request, response) =>
+  createDeliveryFactory().handle(request, response)
 );
 
 routes.get(
@@ -59,8 +58,8 @@ routes.get(
 
 routes.get(
   "/deliveryman/deliveries",
-  ensureAtuhenticateDeliveryman,
-  findAllDeliveriesByDeliverymanController.handle
+  ensureAtuhenticateDeliveryman
+  // findAllDeliveriesByDeliverymanController.handle
 );
 
 routes.put(

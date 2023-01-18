@@ -8,7 +8,7 @@ export class CreateDeliveriesInMemory implements ICreateDeliveries {
     id_client,
     item_name,
     created_at,
-  }: CreateDeliveryDTO): Promise<Deliveries[]> {
+  }: CreateDeliveryDTO): Promise<Deliveries> {
     const deliveries = await Object.assign({
       id_client,
       item_name,

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1673465166114" clover="3.2.0">
-  <project timestamp="1673465166115" name="All files">
-    <metrics statements="171" coveredstatements="160" conditionals="17" coveredconditionals="15" methods="15" coveredmethods="12" elements="203" coveredelements="187" complexity="0" loc="171" ncloc="171" packages="8" files="9" classes="9"/>
+<coverage generated="1674080414766" clover="3.2.0">
+  <project timestamp="1674080414767" name="All files">
+    <metrics statements="207" coveredstatements="196" conditionals="21" coveredconditionals="19" methods="19" coveredmethods="16" elements="247" coveredelements="231" complexity="0" loc="207" ncloc="207" packages="10" files="11" classes="11"/>
     <package name="entities">
       <metrics statements="32" coveredstatements="32" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <file name="Client.ts" path="C:\Users\fagne\Documents\ApiDelivery\src\entities\Client.ts">
@@ -153,6 +153,54 @@
         <line num="29" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
         <line num="31" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="modules.deliveries.usecase.createDelivery">
+      <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="createDeliveriesUseCase.ts" path="C:\Users\fagne\Documents\ApiDelivery\src\modules\deliveries\usecase\createDelivery\createDeliveriesUseCase.ts">
+        <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="modules.deliveries.usecase.inMemory">
+      <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="createDeliveriesInMemory.ts" path="C:\Users\fagne\Documents\ApiDelivery\src\modules\deliveries\usecase\inMemory\createDeliveriesInMemory.ts">
+        <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
       </file>
     </package>
     <package name="modules.deliveryman.deliverymanInMemory">

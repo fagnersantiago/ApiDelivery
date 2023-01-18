@@ -6,5 +6,5 @@ export interface ICreateDeliveries {
     id_client,
     item_name,
     created_at,
-  }: CreateDeliveryDTO): Promise<Deliveries[]>;
+  }: CreateDeliveryDTO): Promise<Deliveries>;
 }
