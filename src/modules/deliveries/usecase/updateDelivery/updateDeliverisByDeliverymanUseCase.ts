@@ -4,7 +4,7 @@ interface IUpdateDelivery {
   id_delivery: string;
   id_deliveryman: string;
 }
-export class UpadateDeliverymanUseCase {
+export class UpadateDeliveriesByDeliverymanUseCase {
   async execute({ id_delivery, id_deliveryman }: IUpdateDelivery) {
     return await prisma.deliveries.update({
       data: { id_deliveryman },

@@ -1,8 +1,9 @@
 import { CreateDeliveriesUseCase } from "../../../deliveries/usecase/createDelivery/createDeliveriesUseCase";
 import { CreateDeliveriesInMemory } from "../../../deliveries/usecase/inMemory/createDeliveriesInMemory";
+import { DelverymanInMemory } from "../../deliverymanInMemory/deliverymanInMemory";
 import { CreateDeliverymanUseCase } from "../createDeliveryman/createDeliverymanUseCase";
 import { DeliverymanRepository } from "../createDeliveryman/repository/inMemory/deliverymanInMemoryRepository";
-import { FindAllDeliveriesByDeliverymanUseCase } from "./findAllDeliveryUseCase";
+import { FindAllDeliveriesByDeliverymanUseCase } from "./findAllDeliveriesByDeliverymanUseCase";
 import { FindAllDeliveriesByDeliverymanRepositoryInMenory } from "./repository/inMemory/findAllDeliveriesByDeliverymanRepositoryInMenory";
 
 let findAllDeliveriesInMenmory: FindAllDeliveriesByDeliverymanRepositoryInMenory;
@@ -21,37 +22,26 @@ describe("Find All Deliveries", () => {
     );
     createDeliveryInMemory = new CreateDeliveriesInMemory();
     createDelivery = new CreateDeliveriesUseCase(createDeliveryInMemory);
-    createDeliverymanInMemory = new DeliverymanRepository()
-    createDeliverymanUseCase = new CreateDeliverymanUseCase(createDeliverymanInMemory)
 
+    createDeliverymanInMemory = new DeliverymanRepository();
+    createDeliverymanUseCase = new CreateDeliverymanUseCase(
+      createDeliverymanInMemory
+    );
   });
 
   it("Should be able to find all deliveries by deliveryman", async () => {
-    const { item_name, id_client, created_at, id_deliveryman } = await createDelivery.execute({
-    
-      item_name: "hot dog",
-      id_client: "123",
-      created_at: new Date(),
-    });
-    await createDelivery.execute({
-      item_name: "hot dog",
-      id_client: "1234",
-      created_at: new Date(),
-    });
-
-    await createDelivery.execute({
-      item_name: "hot dog",
-      id_client: "1235",
-      created_at: new Date(),
+    await createDeliverymanInMemory.create({
+      username: "john doe",
+      password: "123456",
     });
 
     await createDeliveryInMemory.create({
-      item_name,
-      id_client,
-      created_at,
+      id_client: "123",
+      item_name: "Hot dog",
+      created_at: new Date(),
     });
-    
-  //  id_deliveryman = '123'
-  //   const find = await findAllDeliveriesInMenmory.findById(id_deliveryman);
-  // });
+
+    await await finAllDeliveriesUseCase.execute();
+    //  id_deliveryman = '123
+  });
 });

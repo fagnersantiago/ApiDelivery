@@ -1,5 +1,5 @@
 import { Request, response, Response } from "express";
-import { FindAllDeliveriesByDeliverymanUseCase } from "./findAllDeliveryUseCase";
+import { FindAllDeliveriesByDeliverymanUseCase } from "./findAllDeliveriesByDeliverymanUseCase";
 
 export class FindAllDeliveriesByDeliverymanController {
   constructor(
