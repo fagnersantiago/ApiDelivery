@@ -1,9 +1,9 @@
-import { CreateDeliveries } from "../prisma/createDeliveriesPrisama";
+import { DeliveriesRepositories } from "../../repositories/prisma/deliverysRepositories";
 import { CreateDeliveriesController } from "./createDeliveriesController";
 import { CreateDeliveriesUseCase } from "./createDeliveriesUseCase";
 
 export const createDeliveryFactory = () => {
-  const createDeliveryInPrisma = new CreateDeliveries();
+  const createDeliveryInPrisma = new DeliveriesRepositories();
   const createDeliveryUseCase = new CreateDeliveriesUseCase(
     createDeliveryInPrisma
   );

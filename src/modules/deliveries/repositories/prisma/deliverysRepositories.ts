@@ -1,9 +1,13 @@
 import { prisma } from "../../../../databases/prismaClient";
 import { Deliveries } from "../../../../entities/Deliveries";
 import { CreateDeliveryDTO } from "../../dto/createDeliveryDTO";
-import { ICreateDeliveries } from "../IcreateDeliveries";
 
-export class CreateDeliveries implements ICreateDeliveries {
+interface IUpdateDelivery {
+  id_delivery: string;
+  id_deliveryman: string;
+}
+
+export class DeliveriesRepositories {
   async create({
     id_client,
     item_name,
@@ -18,5 +22,13 @@ export class CreateDeliveries implements ICreateDeliveries {
     });
 
     return deliveries as Deliveries;
+  }
+  async update({ id_delivery, id_deliveryman }: IUpdateDelivery) {
+    return await prisma.deliveries.update({
+      data: { id_deliveryman },
+      where: {
+        id: id_delivery,
+      },
+    });
   }
 }

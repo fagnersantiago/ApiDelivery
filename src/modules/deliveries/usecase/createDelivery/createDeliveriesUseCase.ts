@@ -1,4 +1,4 @@
-import { ICreateDeliveries } from "../IcreateDeliveries";
+import { ICreateDeliveries } from "../../repositories/IDeliveriesRepositories";
 import { CreateDeliveryDTO } from "../../dto/createDeliveryDTO";
 
 export class CreateDeliveriesUseCase {

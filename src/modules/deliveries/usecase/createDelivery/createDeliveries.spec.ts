@@ -1,5 +1,5 @@
 import { CreateClientInMemory } from "../../../clients/repository/inMemory/createClientInMemory";
-import { CreateDeliveriesInMemory } from "../inMemory/createDeliveriesInMemory";
+import { CreateDeliveriesInMemory } from "../../repositories/inMemory/createDeliveriesInMemory";
 import { CreateDeliveriesUseCase } from "./createDeliveriesUseCase";
 
 let createDeliveriesInMemory: CreateDeliveriesInMemory;

@@ -1,8 +1,11 @@
 import { Deliveries } from "../../../../entities/Deliveries";
-import { ICreateDeliveries } from "../IcreateDeliveries";
+import {
+  IDeliveriesRepository,
+  IUpdateDelivery,
+} from "../IDeliveriesRepositories";
 import { CreateDeliveryDTO } from "../../dto/createDeliveryDTO";
 
-export class CreateDeliveriesInMemory implements ICreateDeliveries {
+export class CreateDeliveriesInMemory implements IDeliveriesRepository {
   constructor(private devilverieRepository: Deliveries[] = []) {}
   async create({
     id_client,
@@ -16,5 +19,18 @@ export class CreateDeliveriesInMemory implements ICreateDeliveries {
     });
     this.devilverieRepository.push(deliveries);
     return deliveries;
+  }
+  async update({
+    id_delivery,
+    id_deliveryman,
+  }: IUpdateDelivery): Promise<Deliveries> {
+    const updateDelivery = this.devilverieRepository.find(
+      (item) => item.id === item.id
+    );
+    await Object.assign({
+      id_delivery,
+      id_deliveryman,
+    });
+    return updateDelivery as Deliveries;
   }
 }

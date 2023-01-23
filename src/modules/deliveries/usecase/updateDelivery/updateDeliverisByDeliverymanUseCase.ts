@@ -1,16 +1,15 @@
-import { prisma } from "../../../../databases/prismaClient";
+import {
+  IDeliveriesRepository,
+  IUpdateDelivery,
+} from "../../repositories/IDeliveriesRepositories";
 
-interface IUpdateDelivery {
-  id_delivery: string;
-  id_deliveryman: string;
-}
 export class UpadateDeliveriesByDeliverymanUseCase {
+  constructor(private updateDeliveryRepository: IDeliveriesRepository) {}
+
   async execute({ id_delivery, id_deliveryman }: IUpdateDelivery) {
-    return await prisma.deliveries.update({
-      data: { id_deliveryman },
-      where: {
-        id: id_delivery,
-      },
+    return await this.updateDeliveryRepository.update({
+      id_delivery,
+      id_deliveryman,
     });
   }
 }

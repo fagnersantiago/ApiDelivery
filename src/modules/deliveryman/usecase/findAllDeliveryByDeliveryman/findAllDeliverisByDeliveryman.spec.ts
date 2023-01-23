@@ -1,5 +1,5 @@
 import { CreateDeliveriesUseCase } from "../../../deliveries/usecase/createDelivery/createDeliveriesUseCase";
-import { CreateDeliveriesInMemory } from "../../../deliveries/usecase/inMemory/createDeliveriesInMemory";
+import { CreateDeliveriesInMemory } from "../../../deliveries/repositories/inMemory/createDeliveriesInMemory";
 import { DelverymanInMemory } from "../../deliverymanInMemory/deliverymanInMemory";
 import { CreateDeliverymanUseCase } from "../createDeliveryman/createDeliverymanUseCase";
 import { DeliverymanRepository } from "../createDeliveryman/repository/inMemory/deliverymanInMemoryRepository";
