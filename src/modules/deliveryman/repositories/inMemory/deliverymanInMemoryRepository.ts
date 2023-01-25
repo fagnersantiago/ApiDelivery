@@ -1,9 +1,13 @@
-import { Deliveryman } from "../../../../../../entities/Deliveryman";
-import { DeliverymanDto } from "../../../../dto/deliverymanDto";
+import { Deliveryman } from "../../../../entities/Deliveryman";
+import { DeliverymanDto } from "../../dto/deliverymanDto";
 import { IDeliverymanRepository } from "../IdelivermanRepositrory";
+import { Deliveries } from "../../../../entities/Deliveries";
 
 export class DeliverymanRepository implements IDeliverymanRepository {
-  constructor(private deliverymanRepository: Deliveryman[] = []) {}
+  constructor(
+    private deliverymanRepository: Deliveryman[] = [],
+    private deliveriesRepository: Deliveries[] = []
+  ) {}
   async findByUserName(username: string): Promise<Deliveryman> {
     const userNameExists = await this.deliverymanRepository.find(
       (item) => item.username === username
@@ -18,5 +22,10 @@ export class DeliverymanRepository implements IDeliverymanRepository {
     this.deliverymanRepository.push(deliveryman);
 
     return deliveryman;
+  }
+  async findAllDeliveriesByIdDeliveryman(id_deliveryman: string) {
+    return await this.deliveriesRepository.filter(
+      (item) => item.id_deliveryman === id_deliveryman
+    );
   }
 }

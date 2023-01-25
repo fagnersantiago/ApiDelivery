@@ -1,9 +1,12 @@
 import { prisma } from "../../../../databases/prismaClient";
-import { IFindDeliveriesByDeliveryman } from "./repository/IfindAllDeliveriesByDeliverymanRepository";
+import { Deliveries } from "../../../../entities/Deliveries";
+import { IDeliverymanRepository } from "../../repositories/IdelivermanRepositrory";
 
 export class FindAllDeliveriesByDeliverymanUseCase {
-  constructor(private deliveriesRepository: IFindDeliveriesByDeliveryman) {}
-  async execute(id_deliveryman: string) {
-    return await this.deliveriesRepository.findById(id_deliveryman);
+  constructor(private deliveriesRepository: IDeliverymanRepository) {}
+  async execute(id_deliveryman: string): Promise<Deliveries[]> {
+    return await this.deliveriesRepository.findAllDeliveriesByIdDeliveryman(
+      id_deliveryman
+    );
   }
 }

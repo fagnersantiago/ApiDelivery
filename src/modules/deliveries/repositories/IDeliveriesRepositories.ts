@@ -3,7 +3,7 @@ import { Deliveries } from "../../../entities/Deliveries";
 import { CreateDeliveryDTO } from "../dto/createDeliveryDTO";
 
 export interface IUpdateDelivery {
-  id_delivery: string;
+  id: string;
   id_deliveryman: string;
 }
 
@@ -14,5 +14,5 @@ export interface IDeliveriesRepository {
     created_at,
   }: CreateDeliveryDTO): Promise<Deliveries>;
 
-  update({ id_delivery, id_deliveryman }: IUpdateDelivery): Promise<Deliveries>;
+  update({ id, id_deliveryman }: IUpdateDelivery): Promise<Deliveries>;
 }

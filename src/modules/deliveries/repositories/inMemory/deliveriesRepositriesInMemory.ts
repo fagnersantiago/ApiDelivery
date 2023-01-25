@@ -20,17 +20,15 @@ export class CreateDeliveriesInMemory implements IDeliveriesRepository {
     this.devilverieRepository.push(deliveries);
     return deliveries;
   }
-  async update({
-    id_delivery,
-    id_deliveryman,
-  }: IUpdateDelivery): Promise<Deliveries> {
-    const updateDelivery = this.devilverieRepository.find(
-      (item) => item.id === item.id
-    );
-    await Object.assign({
-      id_delivery,
+  async update({ id, id_deliveryman }: IUpdateDelivery): Promise<Deliveries> {
+    const delivery = this.devilverieRepository.find((item) => item.id === id);
+    const updateDeliveries = await Object.assign({
+      id: delivery?.id,
       id_deliveryman,
     });
-    return updateDelivery as Deliveries;
+
+    this.devilverieRepository.push(updateDeliveries);
+
+    return updateDeliveries;
   }
 }

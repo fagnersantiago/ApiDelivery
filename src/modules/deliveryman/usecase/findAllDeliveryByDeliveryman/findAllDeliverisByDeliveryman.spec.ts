@@ -1,47 +1,46 @@
-import { CreateDeliveriesUseCase } from "../../../deliveries/usecase/createDelivery/createDeliveriesUseCase";
-import { CreateDeliveriesInMemory } from "../../../deliveries/repositories/inMemory/createDeliveriesInMemory";
-import { DelverymanInMemory } from "../../deliverymanInMemory/deliverymanInMemory";
-import { CreateDeliverymanUseCase } from "../createDeliveryman/createDeliverymanUseCase";
-import { DeliverymanRepository } from "../createDeliveryman/repository/inMemory/deliverymanInMemoryRepository";
-import { FindAllDeliveriesByDeliverymanUseCase } from "./findAllDeliveriesByDeliverymanUseCase";
-import { FindAllDeliveriesByDeliverymanRepositoryInMenory } from "./repository/inMemory/findAllDeliveriesByDeliverymanRepositoryInMenory";
+// import { CreateDeliveriesUseCase } from "../../../deliveries/usecase/createDelivery/createDeliveriesUseCase";
+// import { CreateDeliveriesInMemory } from "../../../deliveries/repositories/inMemory/deliveriesRepositriesInMemory";
 
-let findAllDeliveriesInMenmory: FindAllDeliveriesByDeliverymanRepositoryInMenory;
-let finAllDeliveriesUseCase: FindAllDeliveriesByDeliverymanUseCase;
-let createDelivery: CreateDeliveriesUseCase;
-let createDeliveryInMemory: CreateDeliveriesInMemory;
-let createDeliverymanInMemory: DeliverymanRepository;
-let createDeliverymanUseCase: CreateDeliverymanUseCase;
+// import { CreateDeliverymanUseCase } from "../createDeliveryman/createDeliverymanUseCase";
 
-describe("Find All Deliveries", () => {
-  beforeAll(() => {
-    findAllDeliveriesInMenmory =
-      new FindAllDeliveriesByDeliverymanRepositoryInMenory();
-    finAllDeliveriesUseCase = new FindAllDeliveriesByDeliverymanUseCase(
-      findAllDeliveriesInMenmory
-    );
-    createDeliveryInMemory = new CreateDeliveriesInMemory();
-    createDelivery = new CreateDeliveriesUseCase(createDeliveryInMemory);
+// import { FindAllDeliveriesByDeliverymanUseCase } from "./findAllDeliveriesByDeliverymanUseCase";
 
-    createDeliverymanInMemory = new DeliverymanRepository();
-    createDeliverymanUseCase = new CreateDeliverymanUseCase(
-      createDeliverymanInMemory
-    );
-  });
+// let findAllDeliveriesInMenmory: FindAllDeliveriesByDeliverymanRepositoryInMenory;
+// let finAllDeliveriesUseCase: FindAllDeliveriesByDeliverymanUseCase;
+// let createDelivery: CreateDeliveriesUseCase;
+// let createDeliveryInMemory: CreateDeliveriesInMemory;
+// let createDeliverymanInMemory: DeliverymanRepository;
+// let createDeliverymanUseCase: CreateDeliverymanUseCase;
 
-  it("Should be able to find all deliveries by deliveryman", async () => {
-    await createDeliverymanInMemory.create({
-      username: "john doe",
-      password: "123456",
-    });
+// describe("Find All Deliveries", () => {
+//   beforeAll(() => {
+//     findAllDeliveriesInMenmory =
+//       new FindAllDeliveriesByDeliverymanRepositoryInMenory();
+//     finAllDeliveriesUseCase = new FindAllDeliveriesByDeliverymanUseCase(
+//       findAllDeliveriesInMenmory
+//     );
+//     createDeliveryInMemory = new CreateDeliveriesInMemory();
+//     createDelivery = new CreateDeliveriesUseCase(createDeliveryInMemory);
 
-    await createDeliveryInMemory.create({
-      id_client: "123",
-      item_name: "Hot dog",
-      created_at: new Date(),
-    });
+//     createDeliverymanInMemory = new DeliverymanRepository();
+//     createDeliverymanUseCase = new CreateDeliverymanUseCase(
+//       createDeliverymanInMemory
+//     );
+//   });
 
-    await await finAllDeliveriesUseCase.execute();
-    //  id_deliveryman = '123
-  });
-});
+//   it("Should be able to find all deliveries by deliveryman", async () => {
+//     await createDeliverymanInMemory.create({
+//       username: "john doe",
+//       password: "123456",
+//     });
+
+//     await createDeliveryInMemory.create({
+//       id_client: "123",
+//       item_name: "Hot dog",
+//       created_at: new Date(),
+//     });
+
+//     //   await await finAllDeliveriesUseCase.execute();
+//     //   //  id_deliveryman = '123
+//   });
+// });

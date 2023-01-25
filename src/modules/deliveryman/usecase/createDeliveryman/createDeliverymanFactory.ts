@@ -1,9 +1,9 @@
-import { CreateDeliverymanPrisma } from "./repository/prisma/createPrismaDeliveryman";
+import { DeliverymanRepositoriesPrisma } from "../../repositories/prisma/deliveyrmanPrismaRepositories";
 import { CreateDeliverymanController } from "./createDeliverymanController";
 import { CreateDeliverymanUseCase } from "./createDeliverymanUseCase";
 
 export const createDeliverymanFactory = () => {
-  const createDeliverymanRepository = new CreateDeliverymanPrisma();
+  const createDeliverymanRepository = new DeliverymanRepositoriesPrisma();
   const createDeliveryman = new CreateDeliverymanUseCase(
     createDeliverymanRepository
   );
