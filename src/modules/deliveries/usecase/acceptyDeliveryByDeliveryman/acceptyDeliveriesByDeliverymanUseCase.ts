@@ -8,11 +8,11 @@ export class AcceptyDeliveriesByDeliverymanUseCase {
   constructor(private updateDeliveryRepository: IDeliveriesRepository) {}
 
   async execute({ id, id_deliveryman }: IUpdateDelivery) {
-    const update = await this.updateDeliveryRepository.update({
+    const updateDelivery = await this.updateDeliveryRepository.update({
       id,
       id_deliveryman,
     });
 
-    return update;
+    return updateDelivery;
   }
 }

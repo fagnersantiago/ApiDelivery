@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for modules/deliveryman/usecase/createDeliveryman/createDeliverymanUseCase.ts</title>
+    <title>Code coverage report for modules/deliveryman/repositories/inMemory/deliverymanInMemoryRepository.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">modules/deliveryman/usecase/createDeliveryman</a> createDeliverymanUseCase.ts</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">modules/deliveryman/repositories/inMemory</a> deliverymanInMemoryRepository.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.75% </span>
+                <span class="strong">45.16% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>30/32</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>3/4</span>
+                <span class='fraction'>14/31</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.75% </span>
+                <span class="strong">25% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>1/4</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">45.16% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>30/32</span>
+                <span class='fraction'>14/31</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -94,8 +94,7 @@
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -106,58 +105,56 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { prisma } from "../../../../databases/prismaClient";
-import { hash } from "bcrypt";
-import { DeliverymanAlreadyExists } from "../../../Error/deliverymanErrors/deliverymanAlreadyExists";
-import { Deliveryman } from "../../../../entities/Deliveryman";
-import { DeliverymanRepository } from "../../repositories/inMemory/deliverymanInMemoryRepository";
-import { IDeliverymanRepository } from "../../repositories/IdelivermanRepositrory";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Deliveryman } from "../../../../entities/Deliveryman";
+import { DeliverymanDto } from "../../dto/deliverymanDto";
+import { IDeliverymanRepository } from "../IdelivermanRepositrory";
+import { Deliveries } from "../../../../entities/Deliveries";
 &nbsp;
-interface IDeliveryman {
-  username: string;
-  password: string;
-}
-&nbsp;
-export class CreateDeliverymanUseCase {
-  constructor(private deleverymanRespository: IDeliverymanRepository) {}
-&nbsp;
-  async execute({ username, password }: IDeliveryman) {
-    const deliverymanExist = await this.deleverymanRespository.findByUserName(
-      username
-    );
-&nbsp;
-    if (deliverymanExist) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >      throw new DeliverymanAlreadyExists();</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-    const hashPassword = await hash(password, 10);
-&nbsp;
-    const deliveryman = await this.deleverymanRespository.create({
-      username,
-      password: hashPassword,
-    });
-    return deliveryman;
-  }
+export class DeliverymanRepository implements IDeliverymanRepository {
+  constructor(
+    private deliverymanRepository: Deliveryman[] = [],
+    private deliveriesRepository: Deliveries[] = []
+  ) {}
+  async <span class="fstat-no" title="function not covered" >findByUserName(username: string): Promise&lt;Deliveryman&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    const userNameExists = await this.deliverymanRepository.find(</span>
+<span class="cstat-no" title="statement not covered" >      (item) =&gt; item.username === username</span>
+<span class="cstat-no" title="statement not covered" >    );</span>
+<span class="cstat-no" title="statement not covered" >    return userNameExists as Deliveryman;</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+  async <span class="fstat-no" title="function not covered" >create({ username, password }: DeliverymanDto): Promise&lt;Deliveryman&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    const deliveryman = await Object.assign({</span>
+<span class="cstat-no" title="statement not covered" >      username,</span>
+<span class="cstat-no" title="statement not covered" >      password,</span>
+<span class="cstat-no" title="statement not covered" >    });</span>
+<span class="cstat-no" title="statement not covered" >    this.deliverymanRepository.push(deliveryman);</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    return deliveryman;</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+  async <span class="fstat-no" title="function not covered" >findAllDeliveriesByIdDeliveryman(id_deliveryman: string) {</span>
+<span class="cstat-no" title="statement not covered" >    return await this.deliveriesRepository.filter(</span>
+<span class="cstat-no" title="statement not covered" >      (item) =&gt; item.id_deliveryman === id_deliveryman</span>
+<span class="cstat-no" title="statement not covered" >    );</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
 }
 &nbsp;</pre></td></tr></table></pre>
 

@@ -3,4 +3,5 @@ export interface CreateDeliveryDTO {
   item_name: string;
   id_client: string;
   created_at: Date;
+  id_deliveryman?: string;
 }

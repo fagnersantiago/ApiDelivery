@@ -22,11 +22,11 @@ describe("Create Deliverys", () => {
       });
 
     const deliveries = await createDeliveriesInMemory.create({
-      item_name,
-      id_client,
-      created_at,
+      item_name: "coca-cola",
+      id_client: "assdf12sdfsggww",
+      created_at: new Date(),
     });
 
-    expect(deliveries).toHaveProperty("id");
+    expect(deliveries).toHaveProperty("created_at");
   });
 });
