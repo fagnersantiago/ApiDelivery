@@ -1,5 +1,5 @@
 import { AppError } from "../../../Error/appError";
-import { CreateClientInMemory } from "../../repository/inMemory/createClientInMemory";
+import { CreateClientInMemory } from "../../repositories/inMemory/createClientInMemory";
 import { CreateClientUseCase } from "./createClientsUseCase";
 
 let createClientInMemory: CreateClientInMemory;

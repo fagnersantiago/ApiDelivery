@@ -4,7 +4,7 @@ import { sign } from "jsonwebtoken";
 import { ClientOrEmailInvalid } from "../../../Error/userErrors/passwordOrEmailInvalid";
 import { UserAlreadyExists } from "../../../Error/userErrors/userAlreadyExistsError";
 import { UserNotFound } from "../../../Error/userErrors/userNotFound";
-import { IClientRepository } from "../../../clients/repository/IclientRepository";
+import { IClientRepository } from "../../../clients/repositories/IclientRepository";
 
 interface IClientAuthenticate {
   username: string;

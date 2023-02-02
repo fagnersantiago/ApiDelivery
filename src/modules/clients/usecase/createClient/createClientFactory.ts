@@ -1,4 +1,4 @@
-import { ClientPrismaRepository } from "../../repository/prisma/createClientPrisma";
+import { ClientPrismaRepository } from "../../repositories/prisma/createClientPrisma";
 import { CreateClientController } from "./createClientsController";
 import { CreateClientUseCase } from "./createClientsUseCase";
 

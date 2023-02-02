@@ -1,4 +1,4 @@
-import { CreateClientInMemory } from "../../../clients/repository/inMemory/createClientInMemory";
+import { CreateClientInMemory } from "../../../clients/repositories/inMemory/createClientInMemory";
 import { CreateDeliveriesInMemory } from "../../repositories/inMemory/deliveriesRepositriesInMemory";
 import { CreateDeliveriesUseCase } from "./createDeliveriesUseCase";
 

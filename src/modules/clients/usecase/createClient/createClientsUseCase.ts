@@ -2,7 +2,7 @@ import { prisma } from "../../../../databases/prismaClient";
 import { hash } from "bcrypt";
 import { UserAlreadyExists } from "../../../Error/userErrors/userAlreadyExistsError";
 import { Client } from "../../../../entities/Client";
-import { IClientRepository } from "../../repository/IclientRepository";
+import { IClientRepository } from "../../repositories/IclientRepository";
 
 interface IUserClient {
   username: string;

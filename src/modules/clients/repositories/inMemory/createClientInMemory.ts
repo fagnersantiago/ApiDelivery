@@ -5,10 +5,10 @@ import { IClientDTO } from "../../dto/IclientDTO";
 import { IClientRepository } from "../IclientRepository";
 
 export class CreateClientInMemory implements IClientRepository {
-  private createClientInMemory: Client[] = [];
+  private clientInMemoryRepository: Client[] = [];
 
   async findByUsername(username: String): Promise<Client> {
-    const user = await this.createClientInMemory.find(
+    const user = await this.clientInMemoryRepository.find(
       (item) => item.username === username
     );
 
@@ -22,8 +22,15 @@ export class CreateClientInMemory implements IClientRepository {
       username,
       password,
     });
-    this.createClientInMemory.push(client);
+    this.clientInMemoryRepository.push(client);
 
     return client;
+  }
+  async findAllDeliveries(id_client: string): Promise<Client> {
+    const findAll = await this.clientInMemoryRepository.filter(
+      (item) => item.id === id_client
+    );
+
+    return findAll;
   }
 }
