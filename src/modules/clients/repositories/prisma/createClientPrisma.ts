@@ -1,5 +1,6 @@
 import { prisma } from "../../../../databases/prismaClient";
 import { Client } from "../../../../entities/Client";
+import { Deliveries } from "../../../../entities/Deliveries";
 import { IClientDTO } from "../../dto/IclientDTO";
 import { IClientRepository } from "../IclientRepository";
 
@@ -28,7 +29,7 @@ export class ClientPrismaRepository implements IClientRepository {
   }
 
   async findAllDeliveries(id_client: string) {
-    return await prisma.clients.findMany({
+    const find = await prisma.clients.findMany({
       where: {
         id: id_client,
       },
@@ -38,5 +39,7 @@ export class ClientPrismaRepository implements IClientRepository {
         deliveries: true,
       },
     });
+
+    return find;
   }
 }
