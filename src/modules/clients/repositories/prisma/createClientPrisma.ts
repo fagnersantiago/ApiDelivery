@@ -28,8 +28,8 @@ export class ClientPrismaRepository implements IClientRepository {
     return client;
   }
 
-  async findAllDeliveries(id_client: string) {
-    const find = await prisma.clients.findMany({
+  async findAllDeliveries(id_client: string): Promise<Deliveries[]> {
+    const findAll = await prisma.clients.findMany({
       where: {
         id: id_client,
       },
@@ -40,6 +40,6 @@ export class ClientPrismaRepository implements IClientRepository {
       },
     });
 
-    return find;
+    return findAll as Deliveries[];
   }
 }

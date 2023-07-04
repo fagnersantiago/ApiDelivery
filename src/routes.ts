@@ -7,11 +7,7 @@ import { ensureAtuhenticateDeliveryman } from "./modules/middlewares/ensureAtuhe
 
 import { UpdateEndAtController } from "./modules/deliveries/usecase/updateEndAt/updateEndAtController";
 import { Factory } from "./shared/factory";
-// import { createClientFactoy } from "./modules/clients/usecase/createClient/createClientFactory";
-// import { acceptyDeliveryByDeliverymanFactory } from "./modules/deliveries/usecase/acceptyDeliveryByDeliveryman/acceptyDeliveriesByDeliverymanFactory";
-// import { authenticateClientFactory } from "./modules/Account/AuthenticateClient/usecase/AuthentitaceFactory";
-import { createDeliveryFactory } from "./modules/deliveries/usecase/createDelivery/createDeliveriesFactory";
-// import { findAllDeliveriesByDeliverymanFactory } from "./modules/deliveryman/usecase/findAllDeliveryByDeliveryman/findAllDeliveriesByDeliverymanFactory";
+
 const routes = Router();
 
 const authentticateDeliveryman = new AuthenticateDeliverymanController();
@@ -31,7 +27,7 @@ routes.post("/deliveryman/", (request, response) =>
   new Factory().createDeliverymanFactory().handle(request, response)
 );
 routes.post("/delivery/", ensureAuthentication, (request, response) =>
-  createDeliveryFactory().handle(request, response)
+  new Factory().createDeliveryFactory().handle(request, response)
 );
 
 routes.get(

@@ -18,6 +18,8 @@ import { CreateDeliverymanUseCase } from "../modules/deliveryman/usecase/createD
 import { AuthenticateClientUseCase } from "../modules/Account/AuthenticateClient/usecase/AuthenticateClientUseCase";
 import { AuthenticateClientController } from "../modules/Account/AuthenticateClient/usecase/AuthenticateClientController";
 
+import { CreateDeliveriesController } from "../modules/deliveries/usecase/createDelivery/createDeliveriesController";
+import { CreateDeliveriesUseCase } from "../modules/deliveries/usecase/createDelivery/createDeliveriesUseCase";
 export class Factory {
   public findAllDeliveriesByClientFactory() {
     const findAllDeliveriesByClientInPrisma = new ClientPrismaRepository();
@@ -73,6 +75,19 @@ export class Factory {
     );
     return createDeliverymanController;
   }
+
+  public createDeliveryFactory() {
+    const createDeliveryInPrisma = new DeliveriesRepositories();
+    const createDeliveryUseCase = new CreateDeliveriesUseCase(
+      createDeliveryInPrisma
+    );
+    const createDeliveryController = new CreateDeliveriesController(
+      createDeliveryUseCase
+    );
+
+    return createDeliveryController;
+  }
+
   public authenticateClientFactory() {
     const createClientRepository = new ClientPrismaRepository();
     const authenticateClient = new AuthenticateClientUseCase(

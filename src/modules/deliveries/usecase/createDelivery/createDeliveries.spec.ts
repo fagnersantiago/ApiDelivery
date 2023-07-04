@@ -14,12 +14,11 @@ describe("Create Deliverys", () => {
   });
 
   it("Should be able create a new delivery", async () => {
-    const { item_name, id_client, created_at } =
-      await createDeliveriesUsecase.execute({
-        item_name: "hot dog",
-        id_client: "1231313",
-        created_at: new Date(),
-      });
+    await createDeliveriesUsecase.execute({
+      item_name: "hot dog",
+      id_client: "1231313",
+      created_at: new Date(),
+    });
 
     const deliveries = await createDeliveriesInMemory.create({
       item_name: "coca-cola",

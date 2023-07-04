@@ -9,7 +9,7 @@ export class DeliverymanRepository implements IDeliverymanRepository {
     private deliveriesRepository: Deliveries[] = []
   ) {}
   async findByUserName(username: string): Promise<Deliveryman> {
-    const userNameExists = await this.deliverymanRepository.find(
+    const userNameExists = this.deliverymanRepository.find(
       (item) => item.username === username
     );
     return userNameExists as Deliveryman;
@@ -24,7 +24,7 @@ export class DeliverymanRepository implements IDeliverymanRepository {
     return deliveryman;
   }
   async findAllDeliveriesByIdDeliveryman(id_deliveryman: string) {
-    return await this.deliveriesRepository.filter(
+    return this.deliveriesRepository.filter(
       (item) => item.id_deliveryman === id_deliveryman
     );
   }
